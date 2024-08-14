@@ -1,0 +1,103 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define max 5
+
+
+
+void insert();
+void delet();
+void display();
+int ary[max];
+int rear=-1;
+int front=-1;
+
+int *r=&rear;
+int *f=&front;
+
+
+int main()
+{
+    int choice;
+    printf("1.insert\n2.delet\n3.display\n");
+    
+    while(1)
+    {
+        printf("Enter choice\n");
+        scanf("%d",&choice);
+        
+        switch(choice)
+        {
+            case 1:
+            insert();
+            break;
+            
+            case 2:
+            delet();
+            break;
+            
+            case 3:
+            display();
+            break;
+            
+            case 4:
+            printf("Exit");
+            break;
+            
+            default:
+            printf("wrong element");
+            
+        }
+    }
+}
+
+void insert()
+{
+    int item;
+    if(*r==max-1)
+    {
+        printf("queue is full");
+    }
+    else
+    {
+        if(*f==-1)
+        *f=0;
+        printf("Enter item\n");
+        scanf("%d",&item);
+        
+        *r=*r+1;
+        ary[*r]=item;
+    }
+}
+
+void delet()
+{
+    if(*f==-1 || *f>*r)
+    {
+        printf("queue is Empty");
+        
+    }
+    else
+    {
+        printf("delet item %d",ary[*f]);
+        *f=*f+1;
+        
+    }
+}
+
+void display()
+{
+    int i;
+    
+    if(*f==-1)
+    {
+        printf("queue is Empty");
+        
+    }
+    else
+    {
+        for(i=*f;i<=*r;i++)
+        printf("%d\n",ary[i]);
+    }
+}
+
+
