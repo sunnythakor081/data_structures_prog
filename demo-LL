@@ -1,0 +1,159 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node;
+{
+    int data;
+    struct node *add;
+};
+struct node *start=null,*new1,*temp,*prev,*next;
+
+void main()
+{
+    int choice;
+    printf("create\ndisplay\ninsert fist\ninsert second\ninsert_last\ndelet first\ndelet mid\ndelet last\nexit\n");
+    
+    while(1)
+    {
+        printf("enter your choice");
+        scanf("%d",&choice);
+        
+      switch(choice)
+      {
+          case 1:
+          create();
+          break;
+          
+          case 2:
+          display();
+          break;
+          
+          case 3:
+          insert_fist();
+          break;
+          
+          case 4:
+          insert_last();
+          break;
+          
+          case 5:
+          insert_mid();
+          break;
+          
+          default:
+          printf("wrong element\n");
+          
+      }
+    }
+}
+
+void create()
+{
+    int n
+    char ch;
+    printf("enter element");
+    scanf("%d",&n);
+    
+    start=(struct node*)(malloc(sizeof(struct node)))
+    start->data=n;
+    start->add=null;
+    temp->start;
+    
+    printf("enter your next choice y/n :");
+    scanf("%s",&ch);
+    
+    while(ch="y" || ch=="Y")
+    {
+        printf("enter your next element");
+        scanf("%d",&n);
+        
+        new1=(struct node*)(malloc(sizeof(struct node)))
+        new1->data=n;
+        new1->add=null;
+        temp->add=new1;
+        temp=temp->add;
+        printf("enter your next choice y/n :");
+        scanf("%s",&ch);
+        
+    }
+}
+void display()
+{
+    if(start==null)
+    {
+        printf("element is Empty");
+    }
+    else{
+        temp=start;
+        while(temp!=null)
+        {
+            printf("%d\t",temp->data);
+            temp=temp->add;
+        }
+    }
+}
+void insert_fist()
+{
+      if(start==null)
+    {
+        printf("element is Empty");
+    }
+    else{
+         printf("enter your next element");
+        scanf("%d",&n);
+        
+        new1=(struct node*)(malloc(sizeof(struct node)))
+        new1->data=n;
+        new1->add=null;
+        new1->add=start;
+        start=new1;
+}
+insert_last(){
+    
+     
+      if(start==null)
+    {
+        printf("element is Empty");
+    }
+    else{
+         printf("enter your next element");
+        scanf("%d",&n);
+        
+        new1=(struct node*)(malloc(sizeof(struct node)))
+        new1->data=n;
+        new1->add=null;
+        temp=start;
+        
+        while(temp->add!=null)
+        {
+            temp=temp->add;
+        }
+        temp->add=new1;
+}
+void insert_mid()
+{
+    int n,pos;
+      if(start==null)
+    {
+        printf("element is Empty");
+    }
+    else{
+         printf("enter your next element");
+        scanf("%d",&n);
+        
+        new1=(struct node*)(malloc(sizeof(struct node)))
+        new1->data=n;
+        new1->add=null;
+        printf("enter mid element");
+        scnaf("%d",&pos);
+        next=start;
+        while(i<pos)
+        {
+            prev=newt;
+            next=next->add;
+            i++;
+            }
+            prev->add=new1;
+            new1->add=next;
+    }
+}
