@@ -40,6 +40,13 @@ void main()
           insert_mid();
           break;
           
+          case 6:
+          delete_fist();
+          
+          case 7:
+          delete_lasr();
+          break;
+          
           default:
           printf("wrong element\n");
           
@@ -155,5 +162,61 @@ void insert_mid()
             }
             prev->add=new1;
             new1->add=next;
+    }
+}
+
+void insert_fist()
+{
+       if(start==null)
+    {
+        printf("element is Empty");
+    }
+    else{
+        temp=start;
+        start=start->add;
+        printf("deleted element %d",temp->data);
+        free(temp);
+    }
+    
+}
+void delete_first(){
+     if(start==null)
+    {
+        printf("element is Empty");
+    }
+    else{
+        temp=start;
+        while(temp->add!=null)
+        {
+            prev=temp;
+            temp=temp->add;
+        }
+        pre->add=null;
+        printf("deleter elemt %d",temp->data);
+        free(temp);
+        
+}
+void delete_mid()
+{
+     int i=1,pos;
+      if(start==null)
+    {
+        printf("element is Empty");
+    }
+    else{
+         printf("enter mid element");
+        scnaf("%d",&pos);
+        
+         temp=start;
+        while(i<pos)
+        {
+            prev=newt;
+            next=next->add;
+            i++;
+            }
+            next=temp->add;
+            prev->add=next;
+            printf("delete element %d",temp->data);
+            free(temp);
     }
 }
