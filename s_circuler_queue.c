@@ -3,79 +3,73 @@
 
 #define max 5
 
-int que[max];
+int cque[max];
 
 void insert(int *r,int *f)
 {
-	int val=0;
+	int val;
 	if(*r==max-1 &&*f==0 || *r==*f-1)
 	{
-		printf("que is full\n");
+		printf("Circular Queue is full\n");
 	}
 	else
 	{
 		printf("Enter Element:");
 		scanf("\n%d",&val);
 
-		if(*r==-1&&*f==-1)
+		if(*r==max-1&&*f>0)
 		{
-			 *f=*r=0;
-			 que[*r]=val;
-		}
-		else if(*r==max-1&&*f!=0)
-		{
-		    *r=0;
-			que[*r]=val;
+			 *r=0;
 		}
 		else
 		{
 			*r=*r+1;
-			que[*r]=val;
+			cque[*r]=val;
+		}if(*f==-1){
+		    *f=0;
+		}
 		}
 	}
 	
-}
+
 
 
 void removesq(int *r,int *f)
 {
-	 if(*f==-1&&*r==-1)
+	 if(*f==-1)
 	 {
-		 printf("\nque is empty:\n");
+		 printf("\nCircular Queue is empty:\n");
 	 }
-	 else if(*f==*r)
-	 {
-		 printf("\n%d",que[*f]);
-		 que[*f]=0;
-		 *f=-1;
-		 *r=-1;
-	 }
-	 else if(*f==max-1&&*r<*f)
-	 {
-		 printf("\n%d",que[*f]);
-		 que[*f]=0;
-	     *f=0;
-	 }
-	 else
-	 {
-		 
-		 printf("\n%d\n",que[*f]);
-		 que[*f]=0;
-		 *f=*f+1;
-	 }
+	  else 
+  {
+      printf("\ndeleted element %d",cque[*f]);
+    cque[*f] = 0;
+     if(*r == max-1 && *f >= 0){
+            *r = -1;
+            *f += 1;
+        }
+    else if(*f == *r) 
+    {
+      *f = *r = -1;
+    } 
+    else if(*f == max-1) {
+      *f = 0;
+    }else{ 
+      *f += 1;
+    }
+  }
 }
-
-void display()
-{
-
-	 int i=0;
-
-	 for(i=0;i<max;i++)
-	 {
-		 printf("%d ",que[i]);
-	 }
+void display(int *r, int*f) {
+  int i;
+  if(*f==-1) 
+  {
+    printf("Circular Queue is Empty");
+  } else {
+    for (i = 0; i <= 4; i++) {
+      printf("%d   ", cque[i]);
+    }
+  }
 }
-
 void main()
 
 {
@@ -95,13 +89,15 @@ void main()
 
 		switch(c)
 		{
-		case 1:insert(r,f);
-			   display();
+		case 1:
+		       insert(r,f);
+			   display(r,f);
 			   break;
 		case 2:removesq(r,f);
-			   display();
+			   display(r,f);
 			   break;
-		case 3:exit(0);
+		case 3:
+		exit(0);
 
 		}
 	}
