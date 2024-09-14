@@ -65,7 +65,7 @@ void main()
  char stack[10],in[50];
  int top=-1;
 
- printf("\nEnter Your Infix");
+ printf("\nEnter Your Infix :");
  scanf("%s",in);
  converter(in,stack,top);
 
