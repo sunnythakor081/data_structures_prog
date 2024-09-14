@@ -66,9 +66,9 @@ int del(int arr[],int top)
 void sort(int arr[],int top)
 {
    int temp,i,j;
- for(i=0;i<=top;i++)
+ for(i=0;i<top;i++)
  {
-  for(j=i+1;j<top;j++)
+  for(j=i+1;j<=top;j++)
   {
    if(arr[i]>arr[j])
    {
