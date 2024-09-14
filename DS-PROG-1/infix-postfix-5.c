@@ -10,10 +10,10 @@ int main()
     int stack[100],*top = &d;
     char infix[100],x;
 
-    printf("Enter the Infix expression and end With # : ");
+    printf("Enter the Infix expression  : ");
     scanf("%s",infix);
 
-    while(infix[i] != '#'){
+    while(infix[i] != '\0'){
          if(infix[i]=='+' || infix[i]=='-' || infix[i]=='*' || infix[i]=='/' ){
             if(*top == -1){
                 push(stack,top,infix[i]);
