@@ -10,9 +10,9 @@ int pre(char ch)
 }
 int push(char stack[],int top,char ch)
 {
-  if(top==9)
+  if(top==max-1)
     printf("\nOverflow");
-  else
+  else                              
   {
    top++;
    stack[top]=ch;
@@ -30,28 +30,28 @@ int pop(char stack[],int top)
   }
   return top;
 }
-void converter(char in[],char stack[],int top)
+void converter(char index[],char stack[],int top)
 {
   int i=0;
-  while(in[i]!='\0')
+  while(index[i]!='\0')
   {
-    if(in[i]=='+' || in[i]=='-' || in[i]=='*' || in[i]=='/')
+    if(index[i]=='+' || index[i]=='-' || index[i]=='*' || index[i]=='/')
     {
       if(top==-1)
-	top=push(stack,top,in[i]);
+	top=push(stack,top,index[i]);
       else
       {
 
-	 while(pre(stack[top])>=pre(in[i]) && top!=-1)
+	 while(pre(stack[top])>=pre(index[i]) && top!=-1)
 	   top=pop(stack,top);
 
-	top=push(stack,top,in[i]);
+	top=push(stack,top,index[i]);
 
       }
     }
     else
     {
-      printf(" %c ",in[i]);
+      printf(" %c ",index[i]);
     }
     i++;
   }
@@ -62,11 +62,11 @@ void converter(char in[],char stack[],int top)
 }
 void main()
 {
- char stack[10],in[50];
+ char stack[10],index[50];
  int top=-1;
 
  printf("\nEnter Your Infix :");
- scanf("%s",in);
- converter(in,stack,top);
+ scanf("%s",index);
+ converter(index,stack,top);
 
 }
