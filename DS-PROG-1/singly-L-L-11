@@ -6,46 +6,55 @@
 
 struct node {
   int data;
-  struct node *next;
+  struct node *add;
 };
 
-void insert(struct node **head, int element) {
+void insert(struct node **head, int element) 
+{
   struct node *newNode;
   newNode = (struct node *)malloc(sizeof(struct node));
   newNode->data = element;
-  if (*head == NULL) {
-    newNode->next = NULL;
+  
+  if (*head == NULL) 
+  {
+    newNode->add = NULL;
     *head = newNode;
-  } else {
-    newNode->next = *head;
+  } else
+  {
+    newNode->add = *head;
     *head = newNode;
   }
 }
 
 void delete (struct node **head) {
   struct node *temp;
-  if (*head == NULL) {
+  if (*head == NULL) 
+  {
     printf("List is empty\n");
-  } else {
+  } else 
+  {
     temp = *head;
-    *head = temp->next;
+    *head = temp->add;
     free(temp);
   }
 }
 
-void modify(struct node *head, int oldData, int newData) {
+void modify(struct node *head, int oldData, int newData) 
+{
   struct node *temp = head;
   struct node *prev;
 
-  if (temp == NULL) {
+  if (temp == NULL)
+  {
     printf("List is empty\n");
   } else {
     if (1) {
       while (temp != NULL && temp->data != oldData) {
         prev = temp;
-        temp = temp->next;
+        temp = temp->add;
       }
-      if(temp != NULL){ 
+      if(temp != NULL)
+      { 
         temp->data = newData;
       }else{
         printf("Element not found\n");
@@ -61,7 +70,7 @@ void display(struct node *head) {
   } else {
     while (head != NULL) {
       printf("%d --> ", head->data);
-      head = head->next;
+      head = head->add;
     }
     printf("\n");
   }
