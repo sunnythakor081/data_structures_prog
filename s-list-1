@@ -1,0 +1,69 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node{
+    int data;
+    struct node *next;
+};
+
+void insert(struct node **root,int element){
+    struct node *newNode;
+    newNode = (struct node *)malloc(sizeof(struct node));
+    newNode->data = element;
+    if(*root == NULL){
+        newNode->next = NULL;
+        *root = newNode;
+    }else{
+        newNode->next = *root;
+        *root = newNode;
+    }
+}
+
+void delete(struct node **root){
+    struct node *curr = *root;
+    if(*root == NULL){
+        printf("List is empty\n");
+    }else{
+        *root = (*root)->next;
+        free(curr);
+    }
+}
+
+void display(struct node *root){
+    struct node *temp = root;
+    if(root == NULL){
+        printf("List is empty\n");
+    }else{
+        while(temp != NULL){
+            printf("%d -> ",temp->data);
+            temp = temp->next;
+        }
+    }
+}
+
+void main(){
+    struct node *root;
+    int element,choice;
+    
+    while(1){
+        printf("\nEnter choice : ");
+        scanf("%d",&choice);
+        switch(choice){
+            case 1:
+            printf("Enter The element : " );
+            scanf("%d",&element);
+            insert(&root,element);
+            break;
+            
+            case 2:
+            delete(&root);
+            break;
+            
+            case 3:
+            display(root);
+            break;
+        }
+    }
+    
+    
+}
