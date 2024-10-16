@@ -1,0 +1,35 @@
+#include<stdio.h>
+int binary_shearch(int arry[],int key)
+ {
+     int mid,low=0,high=9;
+     
+     while(low<high)
+     {
+         mid=(low+high)/2;
+         if(arry[mid]==key)
+         {
+             return mid;
+         }else if(arry[mid]>key){
+             
+             high = mid-1;
+          
+         }else{
+             low = mid+1;
+         }
+     }
+     return -1;
+ }
+
+void main(){
+    int arry[]={13,28,33,48,52,67,72,88,91,100};
+    int key=33;
+    int s = binary_shearch(arry,key);
+    
+    if(s==-1){
+        printf("not found");
+    }else{
+        printf("found %d and index %d ",key,s);
+    }
+    
+}
+ 
