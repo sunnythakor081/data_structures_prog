@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int data;
+    struct node *add;
+};
+
+void insert(struct node **head, int element)
+{
+    struct node *newNode;
+    newNode = (struct node *)malloc(sizeof(struct node));
+    newNode->data = element;
+  
+    if (*head == NULL) 
+    {
+        newNode->add = NULL;
+        *head = newNode;
+    } else
+    {
+        newNode->add = *head;
+        *head = newNode;
+    }
+}
+
+void delete(struct node **head) 
+{
+    struct node *temp;
+    if (*head == NULL) {
+        printf("List is empty\n");
+    } else {
+        temp = *head;
+        *head = temp->add;
+        printf("Deleted value: %d\n", temp->data);
+        free(temp);
+    }
+}
+
+void display(struct node *head) {
+    if (head == NULL) {
+        printf("List is empty\n");
+    } else {
+        while (head != NULL) 
+        {
+            printf("%d --> ", head->data);
+            head = head->add;
+        }
+        printf("NULL\n");
+    }
+}
+
+void main() {
+    struct node *head = NULL;
+    int element, choice;
+    printf("\n1 For Insert \n");
+    printf("2 For Delete \n");
+    printf("3 For Display \n");
+
+    while (1) {
+        printf("Enter Your Choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter the element: ");
+                scanf("%d", &element);
+                insert(&head, element);
+                break;
+
+            case 2:
+                delete(&head);
+                break;
+
+            case 3:
+                display(head);
+                break;
+
+            default:
+                printf("Invalid choice!\n");
+                break;
+        }
+    }
+}
